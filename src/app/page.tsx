@@ -1,9 +1,10 @@
-import Image from 'next/image'
+const Home: React.FC = () => {
 
-export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>first commit</h1>
+    <main className='h-screen w-screen'>
+      <h1>first</h1>
     </main>
-  )
-}
+  );
+};
+
+export default Home;
