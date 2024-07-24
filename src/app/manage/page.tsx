@@ -1,11 +1,7 @@
 const Home: React.FC = () => {
 
     return (
-      <section className='h-full w-full flex justify-center'>
-        <div className="border-solid border-2 border-gray-300 w-2/3 flex flex-col">
-          <h1 className="text-emerald-400 text-4xl font-bold mt-5 mb-7 m-auto">
-            URENA
-          </h1>
+        <div>
           <div className="flex mt-7 justify-between items-center mx-7">
             <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
               학생 정보
@@ -79,8 +75,7 @@ const Home: React.FC = () => {
             <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" style={{ fontSize: '12px', fontWeight: '400'}}>확인</button>
           </div>
         </div>
-        
-      </section>
+
     );
   };
   
