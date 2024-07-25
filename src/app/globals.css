@@ -109,10 +109,40 @@ body {
   background: #34d399 !important;
   color: #ffffff !important;
  }
- .dot {
+ .failed {
   height: 8px;
   width: 8px;
   background-color: #f87171;
   border-radius: 50%;
   display: flex;
+}
+.complete {
+  height: 8px;
+  width: 8px;
+  background-color: #34c791;
+  border-radius: 50%;
+  display: flex;
+}
+.partly {
+  height: 8px;
+  width: 8px;
+  background-color: #f1d740;
+  border-radius: 50%;
+  display: flex;
+}
+.empty {
+  height: 8px;
+  width: 8px;
+  background-color: #bbbbbb;
+  border-radius: 50%;
+  display: flex;
+}
+
+.barCompleted {
+  background-color: #00c8a2;
+}
+
+.barLabel {
+  font-size: 20px;
+  color: rgba(0, 128, 0, 0);
 }

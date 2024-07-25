@@ -10,6 +10,7 @@ export default function RootLayout({
             URENA
           </h1>
           {children}
+          <div className='mt-10'></div>
         </div>
         
       </section>
