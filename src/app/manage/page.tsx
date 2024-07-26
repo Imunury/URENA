@@ -1,5 +1,5 @@
 const Home: React.FC = () => {
-  let student = ['마철두', '010-8649-9856', '황대길', '전남고등학교', '2학년', 'O', '홍길동']
+  let student = ['마철두', '010-8649-9856', '황대길', '전남고등학교', '2학년', 'complete', '홍길동']
   let memo = ['메모1입니다', '메모2입니다']
   let mission = [['미션1입니다','월, 수, 금'], ['미션2입니다','매일'], ['미션3입니다','주말']]
 
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
             <h1 className="text-gray-400" style={{ fontSize: '10px' }}>학년</h1>
             <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[4]}</h1>
             <h1 className="text-gray-400" style={{ fontSize: '10px' }}>진행상황</h1>
-            <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[5]}</h1>
+            <div className={student[5]}></div>
           </div>
           <div className="flex mt-7 justify-between items-center mx-7">
             <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
