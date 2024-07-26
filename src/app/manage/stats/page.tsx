@@ -107,7 +107,40 @@ const Home: React.FC = () => {
             labelColor="#00000000"
             height='15px'/>
         </div>
-      </div>
+        <div className="flex px-7 mt-9 items-center justify-between">
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center'}}>월간 미션 완료</h1>
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center' }}>상반기 미션 완료</h1>
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center' }}>하반기 미션 완료</h1>
+        </div>
+        <div className="flex px-7 mt-1 mb-9 items-center justify-between">
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>{complete.length}/30</h1>
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>143/160</h1>
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>120/160</h1>
+        </div>
+        <div className="flex m-auto" style={{ width:'50px', borderBottom: '1px solid #d1d5db' }}/>
+        <div className="flex px-7 mt-9 items-center justify-between">
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center'}}>월간 평균 달성률</h1>
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center' }}>상반기 평균 달성률</h1>
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center' }}>하반기 평균 달성률</h1>
+        </div>
+        <div className="flex px-7 mt-1 mb-9 items-center justify-between">
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>65.1%</h1>
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>70.8%</h1>
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>90.0%</h1>
+        </div>
+        <div className="flex m-auto" style={{ width:'50px', borderBottom: '1px solid #d1d5db' }}/>
+        <div className="flex px-7 mt-9 items-center justify-between">
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center'}}>주중 미션 완료</h1>
+          <h1 className="text-gray-400" style={{ flex:'1', fontSize: '9px', fontWeight: '600', textAlign:'center' }}>주말 미션 완료</h1>
+        </div>
+        <div className="flex px-7 mt-1 mb-9 items-center justify-between">
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>39/60</h1>
+          <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>5/15</h1>
+        </div>
+        <div className="flex justify-center mt-5">
+            <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" style={{ fontSize: '12px', fontWeight: '400'}}>확인</button>
+          </div>
+      </div> 
     );
   };
   
