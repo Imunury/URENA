@@ -1,8 +1,17 @@
-const Home: React.FC = () => {
+'use client'
+
+import { useRouter } from "next/navigation"
+
+const Manage: React.FC = () => {
   let student = ['마철두', '010-8649-9856', '황대길', '전남고등학교', '2학년', 'complete', '홍길동']
   let memo = ['메모1입니다', '메모2입니다']
   let mission = [['미션1입니다','월, 수, 금'], ['미션2입니다','매일'], ['미션3입니다','주말']]
 
+  const router = useRouter()
+
+  const stats = () => {
+    router.push('/manage/stats')
+  }
     return (
         <div>
           <div className="flex mt-7 justify-between items-center mx-7">
@@ -70,7 +79,7 @@ const Home: React.FC = () => {
           }
 
           <div className="flex justify-center mx-7 pt-5 mt-5" style={{ borderTop: '1px solid #d1d5db' }}>
-            <button className="bg-gray-400 text-black px-4 py-2 rounded-md" style={{ fontSize: '16px', fontWeight: '600'}}>달성률 보기</button>
+            <button className="bg-gray-400 text-black px-4 py-2 rounded-md" style={{ fontSize: '16px', fontWeight: '600'}} onClick={stats}>달성률 보기</button>
           </div>
           <div className="flex justify-center mt-5">
             <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" style={{ fontSize: '12px', fontWeight: '400'}}>확인</button>
@@ -80,5 +89,5 @@ const Home: React.FC = () => {
     );
   };
   
-  export default Home;
+  export default Manage;
   

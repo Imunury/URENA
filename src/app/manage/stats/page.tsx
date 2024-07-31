@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import { useRouter } from "next/navigation"
 import Calendar from 'react-calendar';
 import moment from "moment";
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -10,7 +11,7 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-const Home: React.FC = () => {
+const Stats: React.FC = () => {
   let student = '마철두'
   let failed = ["2024-07-01", "2024-07-05"]
   let complete = ["2024-07-02", "2024-07-06", "2024-07-04"]
@@ -21,6 +22,10 @@ const Home: React.FC = () => {
   let latter_half_rate = 99.8
 
   const [value, onChange] = useState<Value>(new Date());
+  const router = useRouter()
+  const check = () => {
+    router.push('/manage')
+  }
 
     return (
       <div>
@@ -138,11 +143,13 @@ const Home: React.FC = () => {
           <h1 className="" style={{ flex:'1', fontSize: '14px' , fontWeight: '600', textAlign:'center'}}>5/15</h1>
         </div>
         <div className="flex justify-center mt-5">
-            <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" style={{ fontSize: '12px', fontWeight: '400'}}>확인</button>
+            <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" 
+            style={{ fontSize: '12px', fontWeight: '400'}}
+            onClick={check}>확인</button>
           </div>
       </div> 
     );
   };
   
-  export default Home;
+  export default Stats;
   
