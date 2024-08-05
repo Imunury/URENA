@@ -1,16 +1,21 @@
 'use client'
 
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 const Manage: React.FC = () => {
+  
+  const router = useRouter()
+  const searchParams = useSearchParams();
+  const student_pk = searchParams.get('student_pk');
+
+
+  //student_pk를 통해 student값 가져오기
   let student = ['마철두', '010-8649-9856', '황대길', '전남고등학교', '2학년', 'complete', '홍길동']
   let memo = ['메모1입니다', '메모2입니다']
   let mission = [['미션1입니다','월, 수, 금'], ['미션2입니다','매일'], ['미션3입니다','주말']]
 
-  const router = useRouter()
-
   const stats = () => {
-    router.push('/manage/stats')
+    router.push(`/manage/stats?student_pk=${student_pk}`)
   }
     return (
         <div>
@@ -24,7 +29,7 @@ const Manage: React.FC = () => {
           </div>
           <div className="flex px-7 mt-9 items-center justify-between">
             <h1 className="text-gray-400" style={{ fontSize: '10px' }}>이름</h1>
-            <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[0]}</h1>
+            <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student_pk}</h1>
             <h1 className="text-gray-400" style={{ fontSize: '10px' }}>연락처</h1>
             <h1 className="" style={{ fontSize: '12px' , fontWeight: '600' }}>{student[1]}</h1>
             <h1 className="text-gray-400" style={{ fontSize: '10px' }}>부모님</h1>
