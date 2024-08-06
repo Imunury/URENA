@@ -21,6 +21,7 @@ const Stats: React.FC = () => {
     router.push(`/manage?student_pk=${student_pk}`)
   }
   
+  //student_pk로 student값 가져오기
   let student = student_pk
   let failed = ["2024-07-01", "2024-07-05"]
   let complete = ["2024-07-02", "2024-07-06", "2024-07-04"]
