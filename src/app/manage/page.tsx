@@ -6,6 +6,7 @@ const Manage: React.FC = () => {
   
   const router = useRouter()
   const searchParams = useSearchParams();
+  if (!searchParams) return null;
   const student_pk = searchParams.get('student_pk');
 
 

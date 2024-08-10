@@ -16,6 +16,7 @@ const Stats: React.FC = () => {
   const [value, onChange] = useState<Value>(new Date());
   const router = useRouter()
   const searchParams = useSearchParams();
+  if (!searchParams) return null;
   const student_pk = searchParams.get('student_pk');
   const check = () => {
     router.push(`/manage?student_pk=${student_pk}`)

@@ -2,10 +2,12 @@
 
 import { useRouter, useSearchParams  } from "next/navigation"
 
+    
 const Moti: React.FC = () => {
     let moti = ['마철두', '010-8649-9856', 'complete']
     const router = useRouter()
     const searchParams = useSearchParams();
+    if (!searchParams) return null;
     const moti_pk = searchParams.get('moti_pk');
 
     const logout = () => {
@@ -15,7 +17,7 @@ const Moti: React.FC = () => {
         <div>
             <div className="flex mt-7 justify-between items-center mx-7">
                 <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
-                학생 정보
+                모티 정보
                 </h1>
                 <h1 className="text-gray-400 font-bold" style={{ fontSize: '14px' , fontWeight: '600'}}>
                 수정
