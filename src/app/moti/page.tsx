@@ -1,7 +1,23 @@
 'use client'
 
-import { useRouter, useSearchParams  } from "next/navigation"
+import { useState } from 'react';
+import { useRouter, useSearchParams  } from "next/navigation";
+import Modal from 'react-modal';
+import ModalStudentAdd from './components/ModalStudentAdd';
 
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  
+//   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+//   Modal.setAppElement('#yourAppElement');
     
 const Moti: React.FC = () => {
     let moti = ['마철두', '010-8649-9856', 'complete']
@@ -10,9 +26,22 @@ const Moti: React.FC = () => {
     if (!searchParams) return null;
     const moti_pk = searchParams.get('moti_pk');
 
-    const logout = () => {
-        router.push('/')
-    }
+    let subtitle;
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    function openModal() {
+        setIsOpen(true);`
+      }
+    
+      function afterOpenModal() {
+        // references are now sync'd and can b`e accessed.
+        subtitle.style.color = '#f00';
+      }
+    
+      function closeModal() {
+        setIsOpen(false);
+      }
+      
     return (
         <div>
             <div className="flex mt-7 justify-between items-center mx-7">
@@ -31,6 +60,18 @@ const Moti: React.FC = () => {
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>업무 상태</h1>
                 <div className={moti[2]}></div>
             </div>
+            <div>
+      <button onClick={openModal}>Open Modal</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <ModalStudentAdd/>
+      </Modal>
+    </div>
         </div>
     )
 }
