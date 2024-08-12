@@ -11,6 +11,7 @@ interface Moti {
 const DataList: React.FC = () => {
 
     const [motis, setMotis] = useState<Moti[]>([]);
+<<<<<<< HEAD
     const [error, setError] = useState<string | null>(null);
 
 
@@ -30,13 +31,24 @@ const DataList: React.FC = () => {
                 setError('Failed to load data');
                 console.error('Fetching error:', error);
             }
+=======
+
+    useEffect(() => {
+        async function getMotiList() {
+            const res = await fetch('/api/moti_list')
+            const data = await res.json()
+            setMotis(data);
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
         }
         getMotiList();
     }, []);
 
+<<<<<<< HEAD
     if (error) {
         return <div>Error: {error}</div>;
     }
+=======
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
     return (
         <div>
             <ul>
@@ -49,11 +61,14 @@ const DataList: React.FC = () => {
                     <li key={moti.phone}>{moti.phone}</li>
                 ))}
             </ul>
+<<<<<<< HEAD
             <ul>
                 {motis.map((moti) => (
                     <li key={moti.work_state}>{moti.work_state}</li>
                 ))}
             </ul>
+=======
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
         </div>
     )
 }

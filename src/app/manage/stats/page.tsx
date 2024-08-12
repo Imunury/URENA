@@ -1,7 +1,11 @@
 'use client'
 
 import { useState } from 'react';
+<<<<<<< HEAD
 import { useRouter } from "next/navigation"
+=======
+import { useRouter, useSearchParams } from "next/navigation"
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
 import Calendar from 'react-calendar';
 import moment from "moment";
 import ProgressBar from "@ramonak/react-progress-bar";
@@ -12,15 +16,35 @@ type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const Stats: React.FC = () => {
+<<<<<<< HEAD
   let student = '마철두'
   let failed = ["2024-07-01", "2024-07-05"]
   let complete = ["2024-07-02", "2024-07-06", "2024-07-04"]
   let partly = ["2024-07-03", "2024-07-07"]
 
+=======
+  
+  const [value, onChange] = useState<Value>(new Date());
+  const router = useRouter()
+  const searchParams = useSearchParams();
+  if (!searchParams) return null;
+  const student_pk = searchParams.get('student_pk');
+  const check = () => {
+    router.push(`/manage?student_pk=${student_pk}`)
+  }
+  
+  //student_pk로 student값 가져오기
+  let student = student_pk
+  let failed = ["2024-07-01", "2024-07-05"]
+  let complete = ["2024-07-02", "2024-07-06", "2024-07-04"]
+  let partly = ["2024-07-03", "2024-07-07"]
+  
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
   let month_rate = 54.6
   let first_half_rate = 42.4
   let latter_half_rate = 99.8
 
+<<<<<<< HEAD
   const [value, onChange] = useState<Value>(new Date());
   const router = useRouter()
   const check = () => {
@@ -28,6 +52,10 @@ const Stats: React.FC = () => {
   }
 
     return (
+=======
+
+  return (
+>>>>>>> f40050a9c128065304969c5f12303fbffa746d30
       <div>
         <div className="flex mt-7 justify-center items-center mx-7">
           <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
