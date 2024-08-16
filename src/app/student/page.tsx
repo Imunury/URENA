@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import DataList from "./components/DataList"
+import DataList from "../moti_list/components/DataList"
 import type { Data } from '../index';
 
 const Student: React.FC = () => {
@@ -17,9 +17,6 @@ const Student: React.FC = () => {
                     throw new Error(`Error: ${res.status}`);
                 }
                 const data = await res.json();
-                if (!Array.isArray(data)) {
-                    throw new Error('Data is not an array');
-                }
                 setMotis(data);
             } catch (error) {
                 setError('Failed to load data');
