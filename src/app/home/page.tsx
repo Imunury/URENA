@@ -9,11 +9,14 @@ const Home: React.FC = () => {
     const logout = () => {
         router.push('/')
     }
+    const moti = () => {
+        router.push('/moti')
+    }
     return (
         <section className='h-full w-full flex flex-col justify-evenly items-center'>
             <div className="flex flex-col">
                 <button className="bg-emerald-400 mt-8 px-10 py-3 rounded-md"><h1>학생 정보</h1></button>
-                <button className="bg-emerald-400 mt-8 px-10 py-3 rounded-md"><h1>모티 정보</h1></button>
+                <button className="bg-emerald-400 mt-8 px-10 py-3 rounded-md" onClick={moti}><h1>모티 정보</h1></button>
                 <button className="bg-emerald-400 mt-8 px-10 py-3 rounded-md"><h1>미션 인증</h1></button>
             </div>
             <div>
