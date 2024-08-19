@@ -12,29 +12,29 @@ const Moti: React.FC = () => {
     const searchParams = useSearchParams();
     if (!searchParams) return null;
 
-    // const [motis, setMotis] = useState<Data[]>([]);
-    // const [error, setError] = useState<string | null>(null);
+    const [motis, setMotis] = useState<Data[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
-    // useEffect(() => {
-    //     async function getMotiList() {
-    //         try {
-    //             const res = await fetch('/api/moti_list');
-    //             if (!res.ok) {
-    //                 throw new Error(`Error: ${res.status}`);
-    //             }
-    //             const data = await res.json();
-    //             setMotis(data);
-    //         } catch (error) {
-    //             setError('Failed to load data');
-    //             console.error('Fetching error:', error);
-    //         }
-    //     }
-    //     getMotiList();
-    // }, []);
+    useEffect(() => {
+        async function getMotiList() {
+            try {
+                const res = await fetch('/api/moti_list');
+                if (!res.ok) {
+                    throw new Error(`Error: ${res.status}`);
+                }
+                const data = await res.json();
+                setMotis(data);
+            } catch (error) {
+                setError('Failed to load data');
+                console.error('Fetching error:', error);
+            }
+        }
+        getMotiList();
+    }, []);
 
-    // if (error) {
-    //     return <div>Error: {error}</div>;
-    // }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className='flex flex-col mx-7'>
