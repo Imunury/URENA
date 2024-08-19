@@ -10,6 +10,9 @@ const Home: React.FC = () => {
     const logout = () => {
         router.push('/')
     }
+    const moti = () => {
+        router.push('/moti')
+    }
     return (
         <section className='h-full w-full flex flex-col justify-evenly items-center'>
             <div className="flex flex-col">
