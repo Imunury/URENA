@@ -49,7 +49,7 @@ const Moti: React.FC = () => {
                     수정
                 </h1>
             </div>
-            <DataList data={motis} />
+            {/* <DataList data={motis} /> */}
             <div className='flex justify-end pt-3'>
                 <h1 className='text-emerald-400'>+ 모티 추가</h1>
             </div>
