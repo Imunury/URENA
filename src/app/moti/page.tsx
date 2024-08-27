@@ -1,7 +1,7 @@
 'use client'
 
 
-import { useState } from 'react';
+import { Suspense } from 'react';
 import { useRouter, useSearchParams  } from "next/navigation";
 import Modal from 'react-modal';
 import ModalStudentAdd from './components/ModalStudentAdd';
@@ -26,7 +26,7 @@ const Moti: React.FC = () => {
     )}
     
     else {return (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
             <div className="flex mt-7 justify-between items-center mx-7">
                 <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
                 모티 정보
@@ -52,7 +52,7 @@ const Moti: React.FC = () => {
                 <button className='m-3 px-3 py-1' style={{ borderRadius:'5px', backgroundColor:'#00C8A2', color:'white', fontSize:'12px', fontWeight:'800'}}>확인</button>
                 <button className='m-3 px-3 py-1' style={{ borderRadius:'5px', backgroundColor:'#D9D9D9', color:'white', fontSize:'12px', fontWeight:'800'}} onClick={moti_list}>취소</button>
             </div>
-        </div>
+        </Suspense>
     )}
 }
 
