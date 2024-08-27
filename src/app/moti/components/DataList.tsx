@@ -1,9 +1,9 @@
 import { useState } from "react";
-import type { Data } from '../../index';
+import type { MotiData } from '../../index';
 import { useRouter } from "next/navigation"
 
 interface DataProps {
-    data: Data[];
+    data: MotiData[];
 }
 
 const DataList: React.FC<DataProps> = ({ data }) => {

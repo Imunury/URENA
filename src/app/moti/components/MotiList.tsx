@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import DataList from './DataList'
-import type { Data } from '../../index';
+import type { MotiData } from '../../index';
 
 const MotiList: React.FC = () => {
 
-    const [motis, setMotis] = useState<Data[]>([]);
+    const [motis, setMotis] = useState<MotiData[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
