@@ -56,28 +56,24 @@ const Stats: React.FC = () => {
           showNeighboringMonth={false}
           minDetail='month'
           maxDetail='month'
-          tileContent={({ date, view }) => { 
+          tileContent={({ date, view }) => {
             let html = [];
             if (failed.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="failed"></div>);
-            }
-            else if(complete.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="complete"></div>);
-            }
-            else if (partly.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-              html.push(<div className="partly"></div>);
-            }
-            else {
-              html.push(<div className="empty"></div>);
+                html.push(<div key="failed" className="failed"></div>);
+            } else if (complete.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+                html.push(<div key="complete" className="complete"></div>);
+            } else if (partly.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
+                html.push(<div key="partly" className="partly"></div>);
+            } else {
+                html.push(<div key="empty" className="empty"></div>);
             }
             return (
-              <>
                 <div className="flex justify-center items-center absoluteDiv">
-                  {html}
+                    {html}
                 </div>
-              </>
             );
-          }}/>
+        }}
+        />
         </div>
         <div className="mx-7">
           <h1 className="text-gray-400 font-bold mt-8" style={{ fontSize: '10px' , fontWeight: '600'}}>

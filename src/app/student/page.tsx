@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react";
-import DataList from "../moti_list/components/DataList"
+import DataList from "../moti/components/DataList"
 import type { Data } from '../index';
 
 const Student: React.FC = () => {

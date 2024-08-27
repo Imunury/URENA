@@ -24,6 +24,7 @@ const Moti: React.FC = () => {
             <MotiList/>
         </div>
     )}
+    
     else {return (
         <div>
             <div className="flex mt-7 justify-between items-center mx-7">

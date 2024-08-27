@@ -47,9 +47,21 @@ const Mission: React.FC = () => {
     ];
 
     // 특정 날짜에 해당하는 미션들 필터링
-    const filteredMissions = missions.filter(
-        (m) => moment(m.date).format("YYYY-MM-DD") === moment(value).format("YYYY-MM-DD")
-    );
+    const filteredMissions = missions.filter((m) => {
+        if (Array.isArray(value)) {
+            const [startDate, endDate] = value;
+            if (startDate && endDate) {
+                return moment(m.date).isBetween(moment(startDate).startOf('day'), moment(endDate).endOf('day'), undefined, '[]');
+            } else if (startDate) {
+                return moment(m.date).isSame(moment(startDate).startOf('day'), 'day');
+            }
+            return false;
+        } else if (value) {
+            return moment(m.date).isSame(moment(value).startOf('day'), 'day');
+        }
+        return false;
+    });
+    
 
     return (
         <div>
@@ -74,13 +86,13 @@ const Mission: React.FC = () => {
                     tileContent={({ date, view }) => {
                         let html = [];
                         if (failed.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-                            html.push(<div className="failed"></div>);
+                            html.push(<div key="failed" className="failed"></div>);
                         } else if (complete.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-                            html.push(<div className="complete"></div>);
+                            html.push(<div key="complete" className="complete"></div>);
                         } else if (partly.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-                            html.push(<div className="partly"></div>);
+                            html.push(<div key="partly" className="partly"></div>);
                         } else {
-                            html.push(<div className="empty"></div>);
+                            html.push(<div key="empty" className="empty"></div>);
                         }
                         return (
                             <div className="flex justify-center items-center absoluteDiv">
@@ -88,6 +100,7 @@ const Mission: React.FC = () => {
                             </div>
                         );
                     }}
+                    
                 />
             </div>
             <MissionList missions={filteredMissions} />
