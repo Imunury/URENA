@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from "next/navigation";
 import Calendar from 'react-calendar';
 import moment from "moment";
@@ -64,7 +64,7 @@ const Mission: React.FC = () => {
     
 
     return (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
             <div className="flex mt-7 justify-center items-center mx-7">
                 <h1 className="text-2xl font-bold" style={{ fontSize: '16px', fontWeight: '600' }}>
                     미션 인증
@@ -108,7 +108,7 @@ const Mission: React.FC = () => {
                 <button className='m-3 px-3 py-1' style={{ borderRadius: '5px', backgroundColor: '#00C8A2', color: 'white', fontSize: '12px', fontWeight: '800' }}>등록</button>
                 <button className='m-3 px-3 py-1' style={{ borderRadius: '5px', backgroundColor: '#D9D9D9', color: 'white', fontSize: '12px', fontWeight: '800' }}>취소</button>
             </div>
-        </div>
+        </Suspense>
     );
 }
 
