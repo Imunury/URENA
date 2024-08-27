@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from "next/navigation"
 import Calendar from 'react-calendar';
 import moment from "moment";
@@ -16,9 +16,6 @@ const Stats: React.FC = () => {
   const [value, onChange] = useState<Value>(new Date());
   const router = useRouter()
   const searchParams = useSearchParams();
-  if (typeof window === "undefined") {
-    return null;
-  }
   if (!searchParams) return null;
   const student_pk = searchParams.get('student_pk');
   const check = () => {
@@ -37,6 +34,7 @@ const Stats: React.FC = () => {
 
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
       <div>
         <div className="flex mt-7 justify-center items-center mx-7">
           <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
@@ -153,6 +151,7 @@ const Stats: React.FC = () => {
             onClick={check}>확인</button>
           </div>
       </div> 
+      </Suspense>
     );
   };
   

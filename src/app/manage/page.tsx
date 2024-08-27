@@ -1,14 +1,11 @@
 'use client'
-
+import { Suspense } from 'react';
 import { useRouter, useSearchParams } from "next/navigation"
 
 const Manage: React.FC = () => {
   
   const router = useRouter()
   const searchParams = useSearchParams();
-  if (typeof window === "undefined") {
-    return null;
-  }
   if (!searchParams) return null;
   const student_pk = searchParams.get('student_pk');
 
@@ -22,6 +19,7 @@ const Manage: React.FC = () => {
     router.push(`/manage/stats?student_pk=${student_pk}`)
   }
     return (
+      <Suspense fallback={<div>Loading...</div>}>
         <div>
           <div className="flex mt-7 justify-between items-center mx-7">
             <h1 className="text-2xl font-bold" style={{ fontSize: '16px' , fontWeight: '600'}}>
@@ -94,7 +92,7 @@ const Manage: React.FC = () => {
             <button className="bg-emerald-400 text-white px-3 py-1 rounded-md" style={{ fontSize: '12px', fontWeight: '400'}}>확인</button>
           </div>
         </div>
-
+      </Suspense>
     );
   };
   
