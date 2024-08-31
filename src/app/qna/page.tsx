@@ -92,7 +92,7 @@ export default function QnAPage() {
           <div ref={messagesEndRef} /> {/* 스크롤을 이동시킬 참조 */}
         </div>
       </div>
-      <div className="w-full" style={{ padding: '10px', borderTop: '1px solid #ccc', backgroundColor: '#fff', position: 'fixed', bottom: 0}}>
+      <div className="w-1/3" style={{ padding: '10px', borderTop: '1px solid #ccc', backgroundColor: '#fff', position: 'fixed', bottom: 0}}>
         <div  style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
           <input
             type="text"
