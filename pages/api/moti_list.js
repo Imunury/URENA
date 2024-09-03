@@ -1,9 +1,10 @@
 import { query } from "../../lib/db";
 
-// moti 테이블과 student_count를 가져오는 handler
 export default async function handler(req, res) {
+  const { moti_pk } = req.query;
+
   try {
-    const sql = `
+    let sql = `
       SELECT
         m.moti_pk,
         m.phone,
@@ -14,11 +15,17 @@ export default async function handler(req, res) {
         moti m
       LEFT JOIN
         student s ON m.moti_pk = s.moti_pk
-      GROUP BY
-        m.moti_pk, m.phone, m.work_state, m.name
     `;
 
-    const { rows } = await query(sql);
+    const params = [];
+    if (moti_pk) {
+      sql += ` WHERE m.moti_pk = ?`; 
+      params.push(moti_pk);
+    }
+
+    sql += ` GROUP BY m.moti_pk, m.phone, m.work_state, m.name`;
+
+    const { rows } = await query(sql, params);
     res.status(200).json(rows);
   } catch (err) {
     console.error("Error fetching moti data:", err);

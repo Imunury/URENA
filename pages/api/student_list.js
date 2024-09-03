@@ -1,9 +1,10 @@
 import { query } from "../../lib/db";
 
 export default async function handler(req, res) {
+  const { moti_pk } = req.query; // 쿼리 파라미터에서 moti_pk를 받아옴
+
   try {
-    // JOIN을 포함한 쿼리 작성
-    const sql = `
+    let sql = `
       SELECT 
         s.student_pk,
         s.name,
@@ -21,7 +22,13 @@ export default async function handler(req, res) {
         moti m ON s.moti_pk = m.moti_pk
     `;
 
-    const { rows } = await query(sql);
+    const params = [];
+    if (moti_pk) {
+      sql += ` WHERE s.moti_pk = ?`; 
+      params.push(moti_pk);
+    }
+
+    const { rows } = await query(sql, params);
     
     res.status(200).json(rows);
   } catch (err) {
