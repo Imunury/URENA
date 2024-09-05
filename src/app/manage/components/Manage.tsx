@@ -1,15 +1,26 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
+import type { StudentData } from '../../index';
+import useGetApi from '../../components/useGetApi';
 
 const Manage: React.FC = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    if (!searchParams) return null;
-    const student_pk = searchParams.get('student_pk');
+    const student_pk = searchParams ? searchParams.get('student_pk') : null;
 
-    // student_pk를 통해 student 값 가져오기
-    let student = ['마철두', '010-8649-9856', '황대길', '전남고등학교', '2학년', 'complete', '홍길동'];
+    const { data: student, error } = useGetApi<StudentData>(
+        student_pk ? `/api/student_list?student_pk=${student_pk}` : ''
+    );
+
+    if (!student_pk || !student) {
+        return <div>No Data</div>;
+    }
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
+
+
     let memo = ['메모1입니다', '메모2입니다'];
     let mission = [['미션1입니다', '월, 수, 금'], ['미션2입니다', '매일'], ['미션3입니다', '주말']];
 
@@ -29,19 +40,19 @@ const Manage: React.FC = () => {
             </div>
             <div className="flex px-7 mt-9 items-center justify-between">
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>이름</h1>
-                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student_pk}</h1>
+                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student?.name}</h1>
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>연락처</h1>
-                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[1]}</h1>
+                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student?.phone}</h1>
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>부모님</h1>
-                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[2]}</h1>
+                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student?.parent}</h1>
             </div>
             <div className="flex mx-7 mt-6 pb-6 items-center justify-between" style={{ borderBottom: '1px solid #d1d5db' }}>
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>학교</h1>
-                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[3]}</h1>
+                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student?.school}</h1>
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>학년</h1>
-                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student[4]}</h1>
+                <h1 className="" style={{ fontSize: '12px', fontWeight: '600' }}>{student?.grade}</h1>
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>진행상황</h1>
-                <div className={student[5]}></div>
+                <div className={student?.service_state}></div>
             </div>
             <div className="flex mt-7 justify-between items-center mx-7">
                 <h1 className="text-2xl font-bold" style={{ fontSize: '16px', fontWeight: '600' }}>
@@ -53,7 +64,7 @@ const Manage: React.FC = () => {
             </div>
             <div className="flex px-7 mt-9 items-center">
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>담당</h1>
-                <h1 className="ml-3" style={{ fontSize: '14px', fontWeight: '600' }}>{student[6]}</h1>
+                <h1 className="ml-3" style={{ fontSize: '14px', fontWeight: '600' }}>{student?.moti_name}</h1>
             </div>
             <div className="flex mx-7 mt-6 pb-3">
                 <h1 className="text-gray-400" style={{ fontSize: '10px' }}>메모</h1>

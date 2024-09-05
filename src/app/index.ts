@@ -1,5 +1,5 @@
 export interface MotiData {
-  moti_pk: number;
+  moti_pk: string;
   name: string;
   phone: string;
   work_state: string;
@@ -7,7 +7,7 @@ export interface MotiData {
 }
 
 export interface StudentData {
-  student_pk: number;
+  student_pk: string;
   name: string;
   grade: string;
   school: string;

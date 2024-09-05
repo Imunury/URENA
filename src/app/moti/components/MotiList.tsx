@@ -15,8 +15,8 @@ const MotiList: React.FC = () => {
         setIsEditMode(!isEditMode);
     }
 
-    const moti_detail = (motiName: string) => {
-        router.push(`/moti?moti_pk=${motiName}`);
+    const moti_detail = (motiPk: string) => {
+        router.push(`/moti?moti_pk=${motiPk}`); return
     }
 
     if (error) {
@@ -78,7 +78,7 @@ const MotiList: React.FC = () => {
                         <div key={index} className="flex mx-7 mb-2 mt-2 pb-2 items-center" style={{textAlign:'center', borderBottom: '1px solid #d1d5db'}}>
                             {isEditMode && <button style={{ flex: 1, color: '#00C8A2', fontSize: '8px' }}>편집</button>}
                             <h1 style={{ flex: 1,color:"black", fontSize:'10px', fontWeight:'400'}}>{index+1}</h1>
-                            <button style={{ flex: 1,color:"black", fontSize:'10px', fontWeight:'600'}} onClick={() => moti_detail(moti.name)}>{moti.name}</button>
+                            <button style={{ flex: 1,color:"black", fontSize:'10px', fontWeight:'600'}} onClick={() => moti_detail(moti.moti_pk)}>{moti.name}</button>
                             <h1 style={{ flex: 3,color:"black", fontSize:'10px', fontWeight:'400'}}>{moti.phone}</h1>
                             <h1 style={{ flex: 2,color:"black", fontSize:'10px', fontWeight:'400'}}>{moti.student_count}</h1>
                             <button style={{ 
