@@ -19,3 +19,16 @@ export interface StudentData {
   parent_phone : string;
   moti_name : string;
 }
+
+export interface MissionData {
+  mission_pk: number;
+  student_pk: string;
+  student_name: string;
+  start_date: string;
+  end_date: string;
+  service_state: string;
+  title: string;
+  check_date: string;
+  check_stats: string;
+  mission_date: string;
+}

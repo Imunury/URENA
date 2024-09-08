@@ -9,9 +9,11 @@ const Manage: React.FC = () => {
     const searchParams = useSearchParams();
     const student_pk = searchParams ? searchParams.get('student_pk') : null;
 
-    const { data: student, error } = useGetApi<StudentData>(
+    const { data: studentData, error } = useGetApi<StudentData[]>(
         student_pk ? `/api/student_list?student_pk=${student_pk}` : ''
     );
+
+    const student = studentData ? studentData[0] : null;
 
     if (!student_pk || !student) {
         return <div>No Data</div>;
