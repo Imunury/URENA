@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Calendar from 'react-calendar';
 import moment from 'moment';
-import MissionList from './MissionList';
 import 'react-calendar/dist/Calendar.css';
 import useGetApi from '../../components/useGetApi';
 import type { MissionData, StudentData } from '../../index';
@@ -37,13 +36,13 @@ const MissionDetail: React.FC<MissionDetailProps> = ({ student_pk }) => {
         if (Array.isArray(value)) {
             const [startDate, endDate] = value;
             if (startDate && endDate) {
-                return moment(m.mission_date).isBetween(moment(startDate).startOf('day'), moment(endDate).endOf('day'), undefined, '[]');
+                return moment(m.mission_date).subtract(1, 'day').isBetween(moment(startDate).startOf('day'), moment(endDate).endOf('day'), undefined, '[]');
             } else if (startDate) {
-                return moment(m.mission_date).isSame(moment(startDate).startOf('day'), 'day');
+                return moment(m.mission_date).subtract(1, 'day').isSame(moment(startDate).startOf('day'), 'day');
             }
             return false;
         } else if (value) {
-            return moment(m.mission_date).isSame(moment(value).startOf('day'), 'day');
+            return moment(m.mission_date).subtract(1, 'day').isSame(moment(value).startOf('day'), 'day');
         }
         return false;
     });
@@ -103,7 +102,47 @@ const MissionDetail: React.FC<MissionDetailProps> = ({ student_pk }) => {
             />
 
             </div>
-            {/* <MissionList missions={missions} /> */}
+            <div>
+            <div className="flex mx-7 mt-3 mb-4" style={{textAlign:'center'}}>
+                <h1 style={{ flex: 3 }}/>
+                <h1 style={{ flex: 10,color:"#AFAFAF", fontSize:'8px', fontWeight:'400'}}>미션 제목</h1>
+                <h1 style={{ flex: 4,color:"#AFAFAF", fontSize:'8px', fontWeight:'400'}}>인증 요일</h1>
+                <h1 style={{ flex: 3,color:"#AFAFAF", fontSize:'8px', fontWeight:'400'}}>인증 상태</h1>
+            </div>
+            {   
+             filteredMissions.map((mission, index) => {
+                let backgroundColor;
+                let status
+                if (mission.check_stats === '1') {
+                    backgroundColor = "#00C8A2";
+                    status = "성공";
+                } else if (mission.check_stats === '2') {
+                    backgroundColor = "#BF1E2E";
+                    status = "실패"
+                } else if (mission.check_stats === '3') {
+                    backgroundColor = "#E1AB3E";
+                    status = "부분 성공"
+                } else if (mission.check_stats === '4') {
+                    backgroundColor = "black";
+                    status = "예정"
+                } else if (mission.check_stats === '5') {
+                    backgroundColor = "gray";
+                    status = "미션 없음"
+                }
+
+                return (
+                    <div key={index} className="flex mx-7 mb-2 mt-2 pb-2" style={{textAlign:'center'}}>
+                        <h1 style={{ flex: 3,color:"#34d399", fontSize:'10px', fontWeight:'400'}}>미션{index+1}</h1>
+                        <h1 style={{ flex: 10,color:"black", fontSize:'10px', fontWeight:'400', textAlign:'left'}}>{mission.title} </h1>
+                        <h1 style={{ flex: 4,color:"black", fontSize:'10px', fontWeight:'400'}}>매일</h1>
+                        <button style={{ 
+                            color:"white", fontSize:'8px', fontWeight:'600', flex: 3, borderRadius: '5px', backgroundColor , padding:'3px',
+                            }}>{status}</button>
+                    </div>
+                );
+            })
+            }
+        </div>
             <div className='flex' style={{ justifyContent: 'center' }}>
                 <button className='m-3 px-3 py-1' style={{ borderRadius: '5px', backgroundColor: '#00C8A2', color: 'white', fontSize: '12px', fontWeight: '800' }}>등록</button>
                 <button className='m-3 px-3 py-1' style={{ borderRadius: '5px', backgroundColor: '#D9D9D9', color: 'white', fontSize: '12px', fontWeight: '800' }}>취소</button>
